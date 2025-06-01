@@ -2,7 +2,6 @@
 This project simulates two Ubuntu “VMs” (`ubuntu1` and `ubuntu2`) connected by a Docker bridge. Each container creates two Linux network namespaces (NS1, NS2), attaches them to an internal bridge (`br0`), and then routes between the namespaces of both containers.
 
 ![](ContainerNetwork.png)
-
 ---
 
 ## Prerequisites
@@ -18,11 +17,12 @@ This project simulates two Ubuntu “VMs” (`ubuntu1` and `ubuntu2`) connected 
     FROM ubuntu:latest
 
     ENV DEBIAN_FRONTEND=noninteractive
-
+    
     RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         wget \
         iputils-ping \
+        iptables \
         net-tools \
         iproute2 \
         vim \
@@ -30,7 +30,7 @@ This project simulates two Ubuntu “VMs” (`ubuntu1` and `ubuntu2`) connected 
         ca-certificates \
         gnupg \
         && rm -rf /var/lib/apt/lists/*
-
+    
     CMD [ "bash" ]
     ```
 
