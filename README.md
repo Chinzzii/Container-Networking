@@ -1,12 +1,7 @@
 # Docker‑Based Dual‑Ubuntu Network Namespace Demo
-This project simulates two Ubuntu “VMs” (`ubuntu1` and `ubuntu2`) connected by a Docker bridge. Each container creates two Linux network namespaces (NS1, NS2), attaches them to an internal bridge (`br0`), and then routes between the namespaces of both containers. In the end, you can ping:
+This project simulates two Ubuntu “VMs” (`ubuntu1` and `ubuntu2`) connected by a Docker bridge. Each container creates two Linux network namespaces (NS1, NS2), attaches them to an internal bridge (`br0`), and then routes between the namespaces of both containers.
 
-- From NS1 inside `ubuntu1` → 
-  - `172.16.0.1` (bridge on `ubuntu1`)  
-  - `172.16.0.3` (NS2 on `ubuntu1`)  
-  - `192.168.0.11` (host IP of `ubuntu2`)  
-  - `172.16.1.1` (bridge on `ubuntu2`)  
-  - `172.16.1.2` / `172.16.1.3` (NS1 / NS2 on `ubuntu2`)  
+![](ContainerNetwork.png)
 
 ---
 
